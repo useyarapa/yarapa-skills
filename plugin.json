@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "yarapa-skills",
+  "version": "0.1.0",
+  "description": "Repository auditing and GitHub issue and pull request workflows for coding agents.",
+  "author": {
+    "name": "useyarapa",
+    "url": "https://github.com/useyarapa"
+  },
+  "repository": "https://github.com/useyarapa/yarapa-skills",
+  "keywords": ["agent-skills", "repository-audit", "github"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Yarapa Agent",
+        "shortDescription": "Repository audits and GitHub workflows",
+        "longDescription": "A set of portable skills for evidence-based repository audits and GitHub issue and pull request workflows.",
+        "developerName": "useyarapa",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Use Yarapa Agent to audit this repository against its documented requirements.",
+          "Draft a GitHub issue for this bug using this repository's templates and contribution policies.",
+          "Prepare a pull request from the current branch changes using this repository's PR template and verification guidance."
+        ],
+        "capabilities": [
+          "Audit software repositories",
+          "Prepare GitHub issues and pull requests"
+        ]
+      }
+    }
+  }
+}
