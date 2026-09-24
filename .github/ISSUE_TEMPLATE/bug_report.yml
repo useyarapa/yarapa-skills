@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible problem with a skill or this repository.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search existing issues first. Do not include credentials, private URLs, or sensitive user data.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the unexpected behavior and which skill or repository file is involved.
+      placeholder: A concise description of the problem
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the prompt or repository setup needed to reproduce the result.
+      placeholder: |
+        1. Use this skill or setup...
+        2. Give this prompt...
+        3. Observe this result...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: State what the skill or repository should do instead.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and sanitized evidence
+      description: Add relevant version, environment, output, or links. Redact secrets and private data.
+    validations:
+      required: false

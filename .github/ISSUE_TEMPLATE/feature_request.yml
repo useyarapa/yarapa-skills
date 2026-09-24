@@ -1,0 +1,35 @@
+name: Feature request
+description: Suggest a focused skill or improvement to an existing workflow.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the user need and outcome. Proposals should fit the repository's reusable Agent Skills scope.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or unmet need
+      description: What task is difficult or unsupported today?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: What should an agent be able to do?
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Suggested approach
+      description: Optional workflow, trigger examples, or supporting files.
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and context
+      description: Other approaches considered and any relevant repository context.
+    validations:
+      required: false
