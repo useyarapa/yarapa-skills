@@ -23,12 +23,16 @@ _Completion criterion_: The GitHub repository is confirmed and the request has a
 
 ## 2. Draft
 
-1. Follow the repository's title convention when one is documented; otherwise write a concise, outcome-oriented title.
+1. Format every issue title as `<type>(<scope>): <subject>`:
+   - Use one lowercase type from `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, or `test`.
+   - Include a non-empty, lowercase scope.
+   - Write a non-empty subject of at most 50 characters, counting only the text after `: `. Do not end the subject with `!`.
+   - Choose the type, scope, and subject from the verified issue request. For example: `fix(api): reject expired sessions`.
 2. Preserve every selected template heading, required field, option, and order. For YAML issue forms, capture every required response and choose only declared options. If a CLI submission cannot preserve the form, prepare the response for the repository's web form instead of flattening or omitting fields.
 3. Use only verified evidence from repository inspection, command output, or user-provided traces. Ask for required details that cannot be established.
 4. Remove credentials, tokens, personal identifiers, private URLs, and proprietary source snippets. Mark checklist items complete only when evidence supports them; remove placeholders and examples.
 
-_Completion criterion_: The reviewed title and body fill the selected template or fallback, with every required field supported by verified evidence and sensitive material removed.
+_Completion criterion_: The title follows the required format; the body fills the selected template or fallback, with every required field supported by verified evidence and sensitive material removed.
 
 ## 3. Draft or create
 

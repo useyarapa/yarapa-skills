@@ -40,10 +40,14 @@ _Completion criterion_: Applicable repository policy is identified; any release 
 
 1. Find the PR template in GitHub-supported locations: the repository root, `docs/`, or `.github/`, including `pull_request_template.md` and `PULL_REQUEST_TEMPLATE/` directories with supported `.md` or `.txt` files. Follow an explicit repository instruction. If several templates could apply and no default is declared, ask which one to use; never combine them. See [GitHub PR template guidance](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository).
 2. If no template applies, use concise sections for Summary, Changes, and Verification.
-3. Follow the repository's title convention when documented; otherwise use a concise imperative title.
+3. Format every PR title as `<type>(<scope>): <subject>`:
+   - Use one lowercase type from `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, or `test`.
+   - Include a non-empty, lowercase scope.
+   - Write a non-empty subject of at most 50 characters, counting only the text after `: `. Do not end the subject with `!`.
+   - Choose the type, scope, and subject from the verified changes. For example: `feat(auth): add passwordless sign-in`.
 4. Summarize the verified committed diff and why it changed. Link issues only with verified numbers. Preserve template fields and order, and mark checkboxes only when evidence supports them. State checks as requested/not requested, unavailable, or with actual results.
 
-_Completion criterion_: The title and body accurately describe the committed diff and satisfy the selected template or fallback.
+_Completion criterion_: The title follows the required format and accurately describes the committed diff; the body satisfies the selected template or fallback.
 
 ## 4. Draft or create
 
