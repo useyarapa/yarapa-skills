@@ -1,6 +1,6 @@
 # Yarapa Agent Skills
 
-Portable skills for GitHub issue and pull request workflows. Each skill lives in `skills/<name>/SKILL.md` and follows the [Agent Skills specification](https://agentskills.io/specification). The root `plugin.json` packages the collection as a portable Agent Plugin.
+Portable skills for evidence-driven compliance auditing and GitHub issue and pull request workflows. Each skill lives in `skills/<name>/SKILL.md` and follows the [Agent Skills specification](https://agentskills.io/specification). The root `plugin.json` packages the collection as a portable Agent Plugin.
 
 ## Install Skills into Another Repository
 
@@ -11,10 +11,10 @@ Use the [Skills CLI](https://github.com/vercel-labs/skills) from the repository 
 npx skills add /path/to/yarapa-skills/skills --list
 
 # Install one skill from a local clone
-npx skills add /path/to/yarapa-skills/skills --skill create-github-pr --agent codex
+npx skills add /path/to/yarapa-skills/skills --skill compliance-audit-skill --agent codex
 
-# Install from GitHub after the skills are committed and pushed
-npx skills add useyarapa/yarapa-skills --skill create-github-pr --agent codex
+# Install from GitHub after the skill is merged into the default branch
+npx skills add useyarapa/yarapa-skills --skill compliance-audit-skill --agent codex
 ```
 
 Use `--skill '*'` to install the full collection or repeat `--skill` to select several skills. Replace the local path with the path to this repository's `skills/` directory.
@@ -25,6 +25,7 @@ This repository packages its skills as a portable plugin, with `plugin.json` at 
 
 ## Included Skills
 
+- `compliance-audit-skill` — evidence-driven internal assessments and readiness reviews for supported ISO frameworks and PCI DSS.
 - `create-github-issue` — draft or create issues using repository templates and policies.
 - `create-github-pr` — prepare or create pull requests using branch changes and repository guidance.
 
