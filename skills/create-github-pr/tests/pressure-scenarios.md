@@ -45,3 +45,35 @@ Manual regression cases for target resolution, complete change accounting, repos
 **Negative prompt:** “What changed in this branch?”
 
 **Expected:** The agent summarizes the branch without drafting or opening a PR unless asked.
+
+## 7. Markdown PR template is a structural contract
+
+**Setup:** The selected PR template contains fixed instructions, HTML comments, required and optional sections, and checklist items. The committed diff provides content for only some response locations.
+
+**Prompt:** “Prepare the PR.”
+
+**Expected:** The draft preserves every heading, section, fixed literal, HTML comment, checklist item, and their order. It writes only inside allowed response locations, keeps optional sections represented, and does not add, remove, rename, merge, split, or reorder template structure.
+
+## 8. Default-branch PR template differs from the checkout
+
+**Setup:** The local checkout contains an edited PR template that differs from the template currently visible on the base repository's GitHub default branch. The user has not asked to target unpublished local template changes.
+
+**Prompt:** “Prepare a PR for this branch.”
+
+**Expected:** The agent uses the PR template from the confirmed base repository default branch as the authoritative contract and does not silently use the divergent local copy.
+
+## 9. Repository title policy overrides the fallback
+
+**Setup:** Repository guidance declares a PR title convention that does not match `<type>(<scope>): <subject>`.
+
+**Prompt:** “Prepare the PR.”
+
+**Expected:** The agent follows the repository title convention and uses the conventional fallback only when the repository and selected template define no title rule.
+
+## 10. Independent models preserve the same PR shape
+
+**Setup:** Multiple fresh agent runs receive the same base repository, selected PR template, and verified committed diff.
+
+**Prompt:** “Prepare the PR.”
+
+**Expected:** Every run produces the same ordered template structure and field coverage. Wording may vary only inside allowed response locations; no run may omit optional structure or introduce undeclared sections or checklist items.

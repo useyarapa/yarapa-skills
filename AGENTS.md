@@ -14,7 +14,7 @@ Keep each skill focused on one workflow. Write clear, ordered instructions with 
 
 ## Install & Develop
 
-There is no package build or automated test suite. The `.github/workflows/validate-skills.yml` workflow validates skill metadata and changed-line whitespace on pull requests and pushes to `main`. From a consuming repository, the Vercel-maintained Skills CLI can list or install this collection with `npx skills add /path/to/yarapa-skills/skills --list` or `npx skills add /path/to/yarapa-skills/skills --skill audit-repository --agent codex`. Keep both local-path and GitHub examples in `README.md` accurate. Run `git diff --check` and review changed references and metadata.
+There is no package build or automated test suite. The `.github/workflows/validate-skills.yml` workflow validates skill metadata and changed-line whitespace on pull requests and pushes to `main`. From a consuming repository, the Vercel-maintained Skills CLI can list or install this collection with `npx skills add /path/to/yarapa-skills/skills --list` or `npx skills add /path/to/yarapa-skills/skills --skill compliance-audit-skill --agent codex`. Keep both local-path and GitHub examples in `README.md` accurate. Run `git diff --check` and review changed references and metadata.
 
 ## Commit & Pull Request Guidelines
 
