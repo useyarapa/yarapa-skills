@@ -22,7 +22,7 @@ The repository serves two distribution channels:
 │   ├── workflows/
 │   │   └── validate-skills.yml   # CI validation using skills-ref and git whitespace checks
 │   ├── CONTRIBUTING.md           # Contribution guidelines
-│   ├── PULL_REQUEST_TEMPLATE.md  # PR checklist and report format
+│   ├── pull_request_template.md  # PR checklist and report format
 │   └── SECURITY.md               # Security policy
 ├── skills/
 │   ├── compliance-audit-skill/
