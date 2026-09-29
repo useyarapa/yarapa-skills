@@ -4,7 +4,6 @@
 
 `yarapa-skills` is a repository of portable, reusable agent skills maintained by `useyarapa`. It provides specialized capabilities for coding agents:
 
-- Evidence-based repository audits
 - GitHub issue preparation and creation
 - GitHub pull request drafting and creation
 
@@ -25,10 +24,6 @@ The repository serves two distribution channels:
 │   ├── PULL_REQUEST_TEMPLATE.md  # PR checklist and report format
 │   └── SECURITY.md               # Security policy
 ├── skills/
-│   ├── audit-repository/
-│   │   ├── SKILL.md              # Entrypoint: read-only, standards-driven audits
-│   │   ├── references/           # Detailed protocols, sources, framework selection, finding contract
-│   │   └── tests/                # Pressure test scenarios
 │   ├── create-github-issue/
 │   │   ├── SKILL.md              # Entrypoint: issue drafting from repo templates & policies
 │   │   └── tests/                # Pressure test scenarios
