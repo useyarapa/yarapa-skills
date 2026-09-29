@@ -31,4 +31,4 @@ This repository packages its skills as a portable plugin, with `plugin.json` at 
 
 ## Contributing
 
-See [contribution guidance](.github/CONTRIBUTING.md) and the [pull request template](.github/PULL_REQUEST_TEMPLATE.md). Pull requests to `main` run skill metadata and whitespace validation.
+See [contribution guidance](.github/CONTRIBUTING.md) and the [pull request template](.github/pull_request_template.md). Pull requests to `main` run skill metadata and whitespace validation.
