@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "yarapa-skills",
   "version": "0.1.0",
-  "description": "Evidence-driven documentation and specification audits, compliance auditing, and GitHub issue and pull request workflows for agents.",
+  "description": "Evidence-driven documentation audits, compliance auditing, and GitHub issue and pull request workflows for agents.",
   "author": {
     "name": "useyarapa",
     "url": "https://github.com/useyarapa"
@@ -14,7 +14,7 @@
       "interface": {
         "displayName": "Yarapa Agent",
         "shortDescription": "Documentation audits, compliance reviews, and GitHub workflows",
-        "longDescription": "A set of portable skills for evidence-driven documentation and specification audits, compliance audits, and GitHub issue and pull request workflows.",
+        "longDescription": "A set of portable skills for evidence-driven documentation audits, compliance audits, and GitHub issue and pull request workflows.",
         "developerName": "useyarapa",
         "category": "Productivity",
         "defaultPrompt": [
@@ -24,7 +24,7 @@
           "Prepare a pull request from the current branch changes using this repository's PR template and verification guidance."
         ],
         "capabilities": [
-          "Audit documentation and specifications for implementation readiness",
+          "Audit product and engineering documentation for implementation readiness",
           "Conduct evidence-driven compliance audits",
           "Prepare GitHub issues and pull requests"
         ]

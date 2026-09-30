@@ -6,7 +6,7 @@ Normalize each material finding.
 Finding ID:
 Severity:
 Confidence:
-Audit Dimension:
+Audit Lens:
 Classification:
 Affected Artifact(s):
 Affected Capability:
