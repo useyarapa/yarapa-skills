@@ -1,6 +1,6 @@
 # Yarapa Agent Skills
 
-Portable skills for evidence-driven documentation and specification audits, compliance auditing, and GitHub issue and pull request workflows. Each skill lives in `skills/<name>/SKILL.md` and follows the [Agent Skills specification](https://agentskills.io/specification). The root `plugin.json` packages the collection as a portable Agent Plugin.
+Portable skills for evidence-driven documentation audits, compliance auditing, and GitHub issue and pull request workflows. Each skill lives in `skills/<name>/SKILL.md` and follows the [Agent Skills specification](https://agentskills.io/specification). The root `plugin.json` packages the collection as a portable Agent Plugin.
 
 ## Install Skills into Another Repository
 
@@ -14,13 +14,13 @@ npx skills add /path/to/yarapa-skills/skills --list
 npx skills add /path/to/yarapa-skills/skills --skill compliance-audit-skill --agent codex
 
 # Install the documentation audit skill from a local clone
-npx skills add /path/to/yarapa-skills/skills --skill documentation-spec-audit --agent codex
+npx skills add /path/to/yarapa-skills/skills --skill documentation-audit --agent codex
 
 # Install from GitHub after the skill is merged into the default branch
 npx skills add useyarapa/yarapa-skills --skill compliance-audit-skill --agent codex
 
 # Install the documentation audit skill from GitHub
-npx skills add useyarapa/yarapa-skills --skill documentation-spec-audit --agent codex
+npx skills add useyarapa/yarapa-skills --skill documentation-audit --agent codex
 ```
 
 Use `--skill '*'` to install the full collection or repeat `--skill` to select several skills. Replace the local path with the path to this repository's `skills/` directory.
@@ -31,7 +31,7 @@ This repository packages its skills as a portable plugin, with `plugin.json` at 
 
 ## Included Skills
 
-- `documentation-spec-audit` — audit documentation and specification ecosystems for source-of-truth, traceability, contradictions, ownership, implementation readiness, and failure-path controls.
+- `documentation-audit` — audit product and engineering documentation for source-of-truth, traceability, contradictions, ownership, implementation readiness, duplication, and failure-path controls.
 - `compliance-audit-skill` — evidence-driven internal assessments and readiness reviews for supported ISO frameworks and PCI DSS.
 - `create-github-issue` — draft or create issues using repository templates and policies.
 - `create-github-pr` — prepare or create pull requests using branch changes and repository guidance.
