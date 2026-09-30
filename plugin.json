@@ -2,27 +2,29 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "yarapa-skills",
   "version": "0.1.0",
-  "description": "Evidence-driven compliance auditing and GitHub issue and pull request workflows for agents.",
+  "description": "Evidence-driven documentation and specification audits, compliance auditing, and GitHub issue and pull request workflows for agents.",
   "author": {
     "name": "useyarapa",
     "url": "https://github.com/useyarapa"
   },
   "repository": "https://github.com/useyarapa/yarapa-skills",
-  "keywords": ["agent-skills", "compliance-audit", "iso-27001", "pci-dss", "github"],
+  "keywords": ["agent-skills", "documentation-audit", "specification", "traceability", "compliance-audit", "iso-27001", "pci-dss", "github"],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Yarapa Agent",
-        "shortDescription": "Compliance audits and GitHub workflows",
-        "longDescription": "A set of portable skills for evidence-driven compliance audits and GitHub issue and pull request workflows.",
+        "shortDescription": "Documentation audits, compliance reviews, and GitHub workflows",
+        "longDescription": "A set of portable skills for evidence-driven documentation and specification audits, compliance audits, and GitHub issue and pull request workflows.",
         "developerName": "useyarapa",
         "category": "Productivity",
         "defaultPrompt": [
           "Assess this system's readiness for ISO/IEC 27001 using defined scope and available evidence.",
+          "Audit this documentation system for source-of-truth, traceability, contradictions, and implementation readiness.",
           "Draft a GitHub issue for this bug using this repository's templates and contribution policies.",
           "Prepare a pull request from the current branch changes using this repository's PR template and verification guidance."
         ],
         "capabilities": [
+          "Audit documentation and specifications for implementation readiness",
           "Conduct evidence-driven compliance audits",
           "Prepare GitHub issues and pull requests"
         ]
