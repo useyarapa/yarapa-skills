@@ -8,7 +8,15 @@
     "url": "https://github.com/useyarapa"
   },
   "repository": "https://github.com/useyarapa/yarapa-skills",
-  "keywords": ["agent-skills", "documentation-audit", "specification", "traceability", "compliance-audit", "iso-27001", "pci-dss", "github"],
+  "keywords": [
+    "agent-skills",
+    "documentation-audit",
+    "traceability",
+    "compliance-audit",
+    "iso-27001",
+    "pci-dss",
+    "github"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
