@@ -1,51 +1,49 @@
 # Documentation Audit Report
 
-Use only sections that the audit scope supports. A full readiness audit must include every section below. A targeted review must not use the full-readiness verdict tokens; report only a scope-limited status.
+Output starts with `## Result` and uses only these sections:
 
-## 1. Executive result
+1. `Result`
+2. `Material findings` when findings exist
+3. `Documentation Change Set` only for requested/approved documentation writes
 
-- Scope:
-- Verdict: `DOCUMENTATION READY FOR IMPLEMENTATION` or `DOCUMENTATION NOT READY FOR IMPLEMENTATION` (full readiness audit only)
-- Exact failed gates:
-- Critical / High blockers:
-- Evidence limitations:
+## Result
 
-## 2. Source-of-truth map
+- Scope: audited documentation/capability only
+- Status:
+- Material findings: <count> (<blocker count> blockers)
 
-| Concept / capability | Canonical source | Owner | Status | Conflict / gap |
-|---|---|---|---|---|
-|  |  |  |  |  |
+With zero findings, stop here.
 
-## 3. Root-cause findings
+## Material findings
 
-Use `references/finding-schema.md`. Group affected artifacts beneath one root cause instead of duplicating findings by file.
+For a documentation finding:
 
-## 4. Traceability and failure-path evidence
+### <ID> — <Severity> — <Title>
 
-| Capability / path | Upstream authority | Downstream contract / evidence | Existing control | Closure / gap |
-|---|---|---|---|---|
-|  |  |  |  |  |
+- Evidence: only evidence that directly supports this finding; include confidence/evidence level only when material. Do not mention unexecuted tests unless runtime evidence is required for this finding.
+- Problem:
+- Why it matters: direct consequence in inspected/requested scope only.
+- Authority: `RESOLVED` | `UNRESOLVED` | `N/A`
+- Required decision/evidence: only when needed.
+- Documentation action: only when target and direction are authorized.
+- Close when:
+Optional fields are omitted, never filled with `None`, `N/A`, or commentary.
 
-## 5. Implementation decisions that remain unresolved
+For unresolved authority, `Close when` states the required authority/evidence state, not solution branches.
 
-| Decision | Competing definitions / missing evidence | Why implementation would differ | Evidence needed to resolve |
-|---|---|---|---|
-|  |  |  |  |
+For implementation divergence use exactly:
 
-Do not nominate a provisional winner when authority is unresolved.
+### <ID> — IMPLEMENTATION DIVERGENCE — <Title>
 
-## 6. Minimal documentation remediation plan
+- Canonical documentation: <authority and required behavior>
+- Observed mismatch: <read-only evidence only>
+- Why it matters: <direct mismatch only>
+- Handoff required: implementation workflow.
 
-Every remediation row must target documentation only. If the necessary correction is in source code, tests, executable schemas, configuration, infrastructure, CI/CD, generated artifacts, databases, or runtime/provider state, record `IMPLEMENTATION DIVERGENCE` and hand off. Do not place an implementation change in this plan and do not provide implementation steps, commands, file-edit instructions, replacement code, test changes, or configuration values.
+That handoff line is a hard stop.
 
-Order by causal dependency and root cause, not by file count or cosmetic severity.
+## Documentation Change Set
 
-| Order | Root cause | Minimal change | Dependency | Verification criteria |
-|---:|---|---|---|---|
-|  |  |  |  |  |
+Every target is documentation. State current → proposed, evidence, impact, rollback, untouched scope, and completion criteria.
 
-Do not execute remediation unless the exact Change Set is approved.
-
-## 7. Re-audit criteria
-
-State the exact evidence required to close each blocker and which affected lenses must be rechecked.
+Delete content whose only purpose is to say something was checked, passed, skipped, excluded, omitted, correct, non-actionable, or not reported. Emit no text before `## Result` or after the terminal field.

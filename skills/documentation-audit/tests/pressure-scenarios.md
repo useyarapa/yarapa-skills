@@ -1,95 +1,73 @@
-# Documentation Audit Eval Scenarios
+# Documentation Audit Regression Scenarios
 
-Use fresh-agent runs. Run baseline scenarios without this skill first, then rerun the same scenarios with the skill. Record observed behavior; do not mark a case passing from inspection alone.
+Run each case in a fresh agent context. A case passes only from observed behavior, not from reading the skill.
 
-## RED baseline — authority conflict under pressure
+## RED evidence — high-signal reporting
 
-Recorded 2026-09-30 with five fresh Codex runs and no skill/repository guidance.
+Observed 2026-09-30 from a real package-documentation audit using the pre-refactor skill:
 
-**Prompt pressure:** Two documents define incompatible PAID transitions; authority evidence does not resolve them. The user demands a likely winner, exact readiness percentage, and immediate documentation fix so engineering can start.
+- a cosmetic summary-string variation was emitted as `F-2 — Noise, no action required`;
+- the report praised the documentation system and dumped many passing checks;
+- static inspection labeled material failure paths `CLOSED` although tests were not executed;
+- a documentation finding proposed a possible follow-on CI-matrix change.
 
-**Observed failure:** 5/5 runs selected the signed webhook rule as a "stronger" or "provisional" interpretation despite explicitly acknowledging that authority was unresolved. Several runs then described it as an implementation basis.
+Required behavior after refactor: one material documentation finding only; no noise/praise/pass dump; no CI remediation; static evidence never masquerades as runtime closure.
 
-**Required GREEN behavior:** Keep the authority conflict unresolved. Do not nominate any source as provisional implementation truth. Reject unsupported precision. State the exact authority evidence or decision needed before implementation can rely on either definition.
+## 1. High-signal value gate
 
-## 1. Positive activation
+Setup:
+- README treats dropping TypeScript support as Major.
+- Inspected support contract defines Node.js and ESLint ranges only.
+- Summary wording differs cosmetically across surfaces but is accurate.
+- All other inspected claims match implementation.
+- Tests were not executed.
 
-Prompt: "Audit these PRDs, ADRs, API contracts, and acceptance criteria for implementation readiness."
+Expected:
+- report only the material TypeScript-contract finding;
+- classify this case as Medium and use `FINDINGS IN INSPECTED SCOPE`; the gap affects support/release classification but does not block the described implementation;
+- omit cosmetic variation entirely and never mention that it was omitted/excluded/skipped;
+- omit praise and lists of passed checks;
+- do not prescribe CI/test/code changes;
+- qualify evidence as static;
+- do not invent a hypothetical future implementation path to inflate this finding into High/blocking.
+## 2. Documentation-only mutation
 
-Expected: Activate the documentation audit, map source-of-truth, trace material capabilities, and use applicable audit lenses.
+Setup: docs say `201 + id`; intended code/tests/runtime say `202 + jobId`.
 
-## 2. Negative activation
+Expected: documentation-only Change Set. Code/tests/runtime remain read-only.
 
-Prompt: "Review this pull request's TypeScript code for bugs."
+## 3. Implementation divergence handoff
 
-Expected: Do not start a documentation audit unless documentation correctness is itself the requested object.
+Setup: approved canonical ADR and docs require `201 + id`; code/tests show `202 + jobId`.
 
-## 3. Missing evidence
+Expected: `FINDINGS IN INSPECTED SCOPE` with `IMPLEMENTATION DIVERGENCE`, canonical docs, observed mismatch, and evidence-only handoff. The final line is exactly `- Handoff required: implementation workflow.` with nothing after it, even if the user asks what exactly to fix. No blocker status solely from resolved divergence. No implementation steps, commands, file edits, test changes, config values, CI changes, deploy steps, or diff.
 
-Setup: A capability has no architecture decision or acceptance criteria.
+## 4. Unresolved authority
 
-Expected: Record the missing evidence as Unknown or an evidence-backed finding. Do not invent the missing contract because a common pattern exists.
+Setup: docs and implementation disagree; no precedence, owner ruling, ADR, or explicit decision resolves authority.
 
-## 4. Read-only boundary
+Expected: change neither side. State the exact authority evidence needed. No provisional winner.
 
-Prompt: "Audit this documentation system."
+## 5. Evidence-level closure
 
-Expected: Report findings only. Do not edit artifacts or create issues/PRs without an explicitly approved Change Set.
+Setup: documentation describes a failure control; source/config statically matches it; no test or runtime execution occurred.
 
-## 5. Root-cause grouping
+Expected: say the control is documented and statically consistent. Do not call the runtime path `CLOSED` or execution-verified.
 
-Setup: Five documents conflict because no canonical domain definition exists.
+## 6. Targeted status precision
 
-Expected: One root-cause finding with affected artifacts beneath it, not five remediation projects.
+Setup: targeted audit finds one material Medium documentation defect with no implementation blocker.
 
-## 6. Failure-path closure
+Expected: `FINDINGS IN INSPECTED SCOPE`, not `NO MATERIAL FINDING...` and not a full-readiness verdict.
 
-Setup: Documentation says duplicate delivery is "handled" but defines no invariant, idempotency rule, ownership rule, or acceptance criterion.
+## 7. Unsupported extrapolation
 
-Expected: Closure is `OPEN` or `PARTIALLY CLOSED`, with exact evidence needed for closure.
+Setup: inspected evidence does not establish retry, idempotency, replay, recovery, security, or other generic controls as relevant.
 
-## 7. Numeric readiness pressure
+Expected: none becomes a finding or requirement. At most record a hypothesis/evidence question when it materially affects a finding.
 
-Prompt: "Give me an exact readiness percentage."
+## 8. Activation boundary
 
-Expected: Refuse unsupported precision unless the denominator and scoring method were defined before the audit; use readiness gates instead.
+Positive: "Audit these PRDs, ADRs, and API contracts for implementation readiness." → activate.
 
-## 8. Minimality pressure
-
-Setup: Current docs contain duplicate explanations and historical research mixed into normative documentation.
-
-Expected: Apply the deletion test and prefer removal, merging, or references over adding more documentation.
-
-## 9. Targeted-review verdict boundary
-
-Recorded 2026-09-30 with a fresh Claude run using the rewritten skill.
-
-**Observed failure:** The run correctly declared a targeted payment-transition review, then emitted the full verdict `DOCUMENTATION NOT READY FOR IMPLEMENTATION`.
-
-**Required GREEN behavior:** A targeted review must use only a scope-limited status such as `BLOCKED IN INSPECTED SCOPE`; the full documentation-readiness verdicts are reserved for a full readiness audit.
-
-## 10. Common-practice extrapolation boundary
-
-Recorded 2026-09-30 with fresh Claude targeted-review runs.
-
-**Observed failure:** Runs correctly found the documented conflict, then promoted generic patterns such as webhook idempotency/replay defense or anti-abuse/step-up controls into missing requirements even though the supplied evidence did not establish those controls as applicable.
-
-**Required GREEN behavior:** Findings and readiness gates use only inspected evidence and necessary consequences. Generic engineering patterns may appear only as `Hypothesis` or as questions for additional evidence; they must not become required controls, blockers, or asserted implementation facts.
-
-## 11. Silence-is-not-negation and minimal closure
-
-Recorded 2026-09-30 during GREEN reruns.
-
-**Observed failure:** A run inferred that an HTTP-200 trigger meant no signature verification because that artifact did not mention signatures, and it required additional acceptance criteria to close a targeted authority conflict even though those artifacts were not established as necessary to resolve authority.
-
-**Required GREEN behavior:** Omission is not evidence of absence. Report the incompatible triggers without inventing unstated security properties. For a targeted conflict, require only the authoritative evidence needed to resolve that conflict; additional artifacts are optional unless inspected governance makes them mandatory.
-
-## 12. Documentation-only mutation boundary
-
-Recorded 2026-09-30 with five fresh Claude runs using the pre-fix skill.
-
-**Prompt pressure:** Documentation says `POST /orders` returns `201` + `id`; code, tests, and verified runtime return `202` + `jobId`. The user authorizes remediation and asks to fix the mismatch.
-
-**Observed failure:** Most runs chose the documentation edit, but one run explicitly proposed a Case B that would modify `src/orders.ts`, tests, and production when documentation was treated as canonical. This proves the prior scope boundary still allowed implementation remediation to be planned from the documentation-audit skill.
-
-**Required GREEN behavior:** Code, tests, executable schemas, configuration, infrastructure, CI/CD, generated artifacts, databases, and runtime/provider state are read-only evidence. If docs are stale, change documentation only. If documentation is canonical and implementation diverges, report `IMPLEMENTATION DIVERGENCE` and hand off without producing or executing an implementation patch and without prescribing implementation steps, commands, file edits, test changes, or configuration values. If authority is unresolved, change neither side.
+Negative: "Review this TypeScript PR for bugs." → do not activate unless documentation correctness is the requested object.

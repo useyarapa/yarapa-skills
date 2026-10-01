@@ -1,94 +1,47 @@
 # Audit Lenses
 
-Use these lenses as a taxonomy, not as fourteen separate passes. Combine evidence gathering whenever one traversal answers several questions.
+Use lenses to find material documentation defects. Lenses are internal analysis tools, not mandatory report sections.
 
-## 1. Authority / source of truth
+## 1. Authority and consistency
+
+Check:
+- which artifact is canonical for each material decision;
+- conflicting or stale definitions;
+- ambiguity that permits materially different implementations;
+- undocumented precedence.
+
+Authority must come from evidence. Detail, recency, plausibility, or implementation specificity does not establish authority.
+
+## 2. Completeness and readiness
+
+Ask whether an engineer can implement the material capability without inventing a consequential decision.
+
+Inspect only what the capability requires: behavior, states, contracts, ownership, dependencies, permissions, failure behavior, and acceptance evidence.
+
+Do not require generic best practices that inspected evidence does not make relevant.
+
+## 3. Traceability and ownership
+
+Trace material intent to implementation-facing contracts and back to justified needs.
+
+Implementation-facing code, tests, configuration, and runtime are read-only evidence endpoints. They are never remediation targets for this skill.
+## 4. Failure paths
+
+Inspect only failure paths grounded in documented behavior or necessary consequences of it.
+
+For a relevant path, identify the documented control and the evidence level supporting it.
+
+- Documentation only → report the control as documented.
+- Source/config inspected → report static consistency if supported.
+- Test/runtime observed → report execution evidence if supported.
+
+Do not call a runtime path `CLOSED` from static inspection alone.
+
+## 5. Minimality and blind-reader test
 
 Ask:
-- Where is each material concept authoritatively defined?
-- Are there competing canonicals, stale mirrors, or undocumented precedence rules?
-- Can authority be established from evidence rather than guessed?
+- must a competent engineer guess a material decision?
+- does duplicated text create competing authority?
+- would removing this content change a decision, readiness, remediation, or verification requirement?
 
-A source conflict remains open until explicit authority evidence resolves it. Never turn a "more specific" or "more plausible" source into a provisional implementation contract.
-
-## 2. Completeness / implementation readiness
-
-Ask whether each material capability is specified enough to implement without inventing a consequential decision.
-
-Inspect as applicable:
-- purpose and user-visible behavior
-- inputs, outputs, states, transitions, invariants
-- ownership and dependencies
-- data and permissions
-- integration contracts
-- failure, retry, idempotency, and recovery behavior
-- acceptance criteria
-
-Do not demand irrelevant implementation detail.
-
-## 3. Consistency / ambiguity / contradiction
-
-Compare sources that describe the same concept.
-
-Look for:
-- incompatible behavior or state transitions
-- conflicting terminology, ownership, retention, authentication, or integration rules
-- vague language that permits materially different implementations
-
-For blocking ambiguity, state the competing interpretations, downstream difference, and exact missing decision.
-
-## 4. Ownership / boundaries
-
-Ask whether every material responsibility has one defensible owner and whether global and local documentation respects that boundary.
-
-Look for:
-- overlapping or orphan ownership
-- hidden cross-system coupling
-- duplicated domain logic
-- global docs defining local internals
-- local docs redefining global invariants
-
-## 5. Forward and reverse traceability
-
-Forward trace:
-Business or Product Need → Capability → Requirement → Domain Rule → Architecture / Contract → Owner → Acceptance Evidence
-
-Reverse trace:
-Implementation-facing Construct → Architecture Reason → Requirement → Capability → Business or Product Need
-
-Implementation-facing constructs are evidence endpoints, not writable remediation targets for this skill. Broken material edges are findings. Do not require decorative traceability that changes no decision.
-
-## 6. Failure paths and documented controls
-
-Attack only material paths grounded in inspected evidence or necessary consequences of the documented behavior. Generic industry risks may be recorded as hypotheses or evidence questions, but cannot become findings or fail readiness gates by themselves. Omission of an unstated control is not a grounded failure path unless the documentation explicitly requires that control or the path necessarily follows from the documented behavior.
-
-Examples when evidence makes them applicable:
-- duplicate or out-of-order delivery
-- partial success
-- timeout or retry
-- concurrent state changes
-- authorization boundary failure
-- provider behavior changes
-- reconciliation or recovery failure
-
-For each valid path:
-1. state the failure path;
-2. identify the existing documented control;
-3. verify whether that control closes the path;
-4. search for bypasses or contradictions.
-
-Classify closure as `CLOSED`, `PARTIALLY CLOSED`, `OPEN`, or `FALSE POSITIVE`.
-
-## 7. Minimality / duplication / noise
-
-Use the deletion test:
-
-> If this content disappeared, what concrete implementation or decision would become impossible or unsafe?
-
-If there is no meaningful answer, treat it as a noise candidate. Prefer one canonical definition plus references over repeated normative copies.
-
-## 8. Blind-reader reconstruction
-
-Ignore tribal knowledge and historical conversation. Reconstruct the intended system from canonical evidence alone.
-
-Record every material point where a competent engineer must guess. A necessary guess is evidence of an unresolved documentation gap, ambiguity, or authority problem.
+If removal changes nothing material, omit the observation from the final report.
