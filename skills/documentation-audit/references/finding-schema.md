@@ -1,69 +1,21 @@
-# Finding Schema
+# Material Finding Schema
 
-Normalize each material finding.
-
-```text
-Finding ID:
-Severity:
-Confidence:
-Audit Lens:
-Classification:
-Affected Artifact(s):
-Affected Capability:
-Verified Evidence:
-Observed Problem:
-Root Cause:
-Why It Matters:
-Downstream Impact:
-Canonical Source Expected:
-Recommended Minimal Change:
-Action Type: Delete | Merge | Move | Rewrite | Add | Reference | Resolve | None
-Dependencies:
-Verification Criteria:
-Status:
-```
+Only findings that pass the Value Gate in `SKILL.md` are reportable.
 
 ## Severity
 
-### Critical
-The documentation could materially cause:
-- data corruption
-- security boundary failure
-- financial inconsistency
-- incompatible system behavior
-- inability to implement a critical capability
+- **Critical** — documentation can directly drive destructive, security-critical, financially inconsistent, or incompatible behavior.
+- **High** — a concrete action explicitly requested now cannot proceed without inventing a material decision.
+- **Medium** — a material documentation defect changes a release, consumer, ownership, remediation, handoff, or verification decision without blocking an explicitly requested action.
 
-### High
-A significant product/architecture decision must be invented, or multiple materially different implementations are plausible.
+Do not emit Low, Informational, or Noise findings.
 
-### Medium
-Meaningful inconsistency, ambiguity, ownership issue, duplication, or documentation quality problem without immediate critical implementation risk.
+`IMPLEMENTATION DIVERGENCE` is a separate classification, not documentation severity. It is not a documentation blocker unless a separate unresolved documentation finding exists.
 
-### Low
-Minor clarity or discoverability improvement.
+## Evidence level
 
-Do not inflate severity.
+Use the strongest observed level: **Documented**, **Static**, or **Execution**. Never present Static evidence as Execution evidence.
 
-## Confidence
+## Grouping
 
-Use:
-- Verified
-- Inference
-- Hypothesis
-- Unknown
-
-## Classification
-
-Use exactly one primary classification:
-- Engineering Blocker
-- Product Decision Needed
-- Architecture Decision Needed
-- Documentation Defect
-- Informational Finding
-- Noise
-
-## Root-cause grouping
-
-If several findings are symptoms of one missing canonical decision, group them under that root cause and retain affected-artifact detail beneath it.
-
-Avoid duplicate remediation work.
+Group symptoms only when evidence supports one root cause. Otherwise keep the cause `Unknown` and group only by the same unresolved decision.
